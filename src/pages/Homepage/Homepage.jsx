@@ -1,8 +1,11 @@
 import React from 'react'
+import styles from './Homepage.module.css'
 
 function Homepage() {
   return (
-    <div>Homepage</div>
+    <main className={styles.main}>
+      Homepage
+    </main>
   )
 }
 

@@ -1,8 +1,11 @@
 import React from 'react'
+import styles from './ErrorPage.module.css'
 
 function ErrorPage() {
   return (
-    <div>ErrorPage</div>
+    <main className={styles.main}>
+      ErrorPage
+    </main>
   )
 }
 
