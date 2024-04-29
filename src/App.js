@@ -1,10 +1,14 @@
-import "./styles/App.css"
+import AppRouter from "./components/AppRouter/AppRouter";
+import AuthProvider from "./components/Provider/AuthProvider";
+import TokenProvider from "./components/Provider/TokenProvider";
 
 function App() {
   return (
-    <div className="App">
-      Hello world
-    </div>
+    <TokenProvider>
+      <AuthProvider>
+        <AppRouter />
+      </AuthProvider>
+    </TokenProvider>
   );
 }
 
