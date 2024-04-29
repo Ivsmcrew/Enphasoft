@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import AuthProvider from './components/AuthProvider/AuthProvider';
+import TokenProvider from './components/Provider/TokenProvider';
+import AuthProvider from './components/Provider/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AuthProvider>
-    <App />
-  </AuthProvider>
+  <TokenProvider>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </TokenProvider>
 );
 

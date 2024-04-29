@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { UserAuthContext } from "../../context/context";
 
 const AuthProvider = function({children}) {
-  const [token, setToken] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      console.log(localStorage.getItem('token'))
+    if (localStorage.getItem('auth')) {
+      setIsAuth(true)
     }
   }, [])
 
   return (
     <UserAuthContext.Provider value={{
-      token,
-      setToken
+      isAuth,
+      setIsAuth
     }}>
       {children}
     </UserAuthContext.Provider>
