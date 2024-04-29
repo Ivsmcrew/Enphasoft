@@ -1,6 +1,3 @@
-import { useContext } from "react";
-import { UserAuthContext } from "../context/context";
-
 class EmphasoftAPI {
   static emphasoftCDN = 'https://test-assignment.emphasoft.com/api/v1';
   // static user = {
