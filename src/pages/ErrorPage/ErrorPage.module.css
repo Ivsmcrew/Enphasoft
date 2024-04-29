@@ -2,4 +2,10 @@
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.error{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
 }
