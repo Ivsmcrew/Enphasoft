@@ -17,7 +17,7 @@ function CustomForm({submitFunction}) {
       {() => (  //errors, touched and other usefull methods of useFormik
         <Form className={styles.form}>
           <div className={styles.input}>
-            <label for="username" htmlFor="username" className={styles.label}>Username</label>
+            <label htmlFor="username" className={styles.label}>Username</label>
             <Field 
               id="username"
               name="username" 
@@ -29,7 +29,7 @@ function CustomForm({submitFunction}) {
           </div>
 
           <div className={styles.input}>
-            <label for="password" htmlFor="password" className={styles.label}>Password</label>
+            <label htmlFor="password" className={styles.label}>Password</label>
             <Field 
               id="password"
               type="password" 

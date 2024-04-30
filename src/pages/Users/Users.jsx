@@ -1,12 +1,72 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './Users.module.css'
 import { TokenContext } from '../../context/context'
+import EmphasoftAPI from '../../API/emphasoft'
+import { Link, Route, Routes } from 'react-router-dom'
+import CmButton from '../../UI/buttons/CmButton/CmButton'
+import CreateModal from '../CreateModal/CreateModal'
 
+//TODO: при перезагрузке страницы обновляется и сбрасывается контекст с токеном. 
+// Соответственно необходимо опять перелогиниваться
+// Решение: вынести токен в редакс. Как и юзеров
 function Users() {
   const {token, setToken} = useContext(TokenContext)
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    async function getUsers() {
+      let usersData = await EmphasoftAPI.getUsers(token)
+      console.log(usersData)
+      if (usersData) {
+        setUsers(usersData)
+      }
+    }
+    if (token.length) {
+       getUsers()
+    }
+  }, [])
 
   return (
-    <main className={styles.main}>Users</main>
+    <main className={styles.main}>
+      <section className={styles.users}>
+        <div className={styles.users__usersList}>
+          <div className={styles.usersList__preferences}>
+            <select>
+              <option value="price">Sort...</option>
+              <option value="price">By price</option>
+              <option value="year">By year</option>
+            </select>
+            <input type="text" placeholder="Filter by username"/>
+            <Link to="new-user">
+              <CmButton>
+                Create new user
+              </CmButton>
+            </Link>
+          </div>
+          <div className={styles.usersList__list}>
+            {users && users.map(user => {
+              return (
+                <div className={styles.user} key={user.id}>
+                  <p>{"First name: " + (user.first_name || "no first name")}</p>
+                  <p>{"Last name: " + (user.last_name || "no last name")}</p>
+                  <p>{"Username: " + user.username}</p>
+                  <p>{"ID: " + user.id}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+        <div className={styles.users__viewField}>
+
+        </div>
+      </section>
+      <Routes>
+        <Route 
+          path="new-user"
+          element={<CreateModal />}
+        />
+      </Routes>
+    </main>
   )
 }
 

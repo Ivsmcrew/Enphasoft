@@ -9,7 +9,7 @@
 }
 .link{
   font-size: 1.1rem;
-  color: transparent;    
+  /* color: transparent;     */
 	-webkit-background-clip: text;
 	background-clip: text;;
   background-image: linear-gradient(to bottom, red, fuchsia); 
