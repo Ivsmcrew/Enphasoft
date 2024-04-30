@@ -1,0 +1,14 @@
+.button{
+  margin: 0 auto;
+  padding: 10px 30px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+.button:hover{
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.7));
+}
+.button:active{
+  filter: none;
+  background-color: rgba(0, 0, 0, 0.853);
+}

@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react'
 import * as helper from './helper'
 import styles from './CustomForm.module.css'
+import CmButton from '../../UI/buttons/CmButton/CmButton';
 
 function CustomForm({submitFunction}) {
   return (
@@ -40,12 +41,9 @@ function CustomForm({submitFunction}) {
             <ErrorMessage name="password" render={msg => <div className={styles.error}>{msg}</div>} />
           </div>
 
-          <button 
-            type="submit" 
-            className={styles.button}
-          >
+          <CmButton type="submit">
             Log in
-          </button>
+          </CmButton>
         </Form>
       )}
     </Formik>
