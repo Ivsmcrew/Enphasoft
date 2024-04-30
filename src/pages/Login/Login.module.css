@@ -4,3 +4,15 @@
   justify-content: center;
   align-items: center;
 }
+.logoutBoard{
+  background: linear-gradient(45deg, red, fuchsia);
+  padding: 40px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+}

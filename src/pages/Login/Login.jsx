@@ -4,6 +4,7 @@ import { TokenContext, UserAuthContext } from "../../context/context"
 import { useNavigate } from 'react-router-dom'
 import EmphasoftAPI from '../../API/emphasoft'
 import CustomForm from '../../components/CustomForm/CustomForm'
+import CmButton from '../../UI/buttons/CmButton/CmButton'
 
 function Login() {
   const {isAuth, setIsAuth} = useContext(UserAuthContext)
@@ -34,8 +35,12 @@ function Login() {
     isAuth 
       ?
       <main className={styles.main}>
-        <p>You are already logged in</p>
-        <button onClick={exit}>LOG OUT</button>
+        <div className={styles.logoutBoard}>
+          <p>You are already logged in...</p>
+          <CmButton onClick={exit}>
+            Log out
+          </CmButton>
+        </div>
       </main> 
       :
       <main className={styles.main}>
