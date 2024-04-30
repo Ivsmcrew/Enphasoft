@@ -6,5 +6,5 @@
   column-gap: 20px;
 }
 .link:hover{
-  filter: drop-shadow(0 0 4px #ffffff);
+  color: rgb(255, 0, 149);    
 }

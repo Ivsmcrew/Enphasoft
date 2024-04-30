@@ -9,6 +9,10 @@
 }
 .link{
   font-size: 1.1rem;
+  color: transparent;    
+	-webkit-background-clip: text;
+	background-clip: text;;
+  background-image: linear-gradient(to bottom, red, fuchsia); 
 }
 .link:hover{
   color:#ffffff4a
