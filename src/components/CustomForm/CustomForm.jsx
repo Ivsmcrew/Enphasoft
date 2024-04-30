@@ -13,7 +13,7 @@ function CustomForm({submitFunction}) {
         } 
       }
     >
-      {({ isSubmitting }) => (  //errors, touched and other usefull methods of useFormik
+      {() => (  //errors, touched and other usefull methods of useFormik
         <Form className={styles.form}>
           <div className={styles.input}>
             <label htmlFor="username" className={styles.label}>Username</label>
@@ -39,7 +39,6 @@ function CustomForm({submitFunction}) {
 
           <button 
             type="submit" 
-            disabled={isSubmitting}
             className={styles.button}
           >
             Log in

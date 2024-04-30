@@ -20,6 +20,9 @@
 .active{
   border-bottom: 1px solid #ffffff;
 }
+.active:hover{
+  border-bottom: 1px solid fuchsia;
+}
 .logo{
   font-size: 1.4rem;
   font-weight: 700;
