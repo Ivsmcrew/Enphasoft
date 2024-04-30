@@ -8,7 +8,7 @@ const AuthProvider = function({children}) {
       setIsAuth(true)
     }
   }, [])
-console.log(localStorage)
+
   return (
     <UserAuthContext.Provider value={{
       isAuth,

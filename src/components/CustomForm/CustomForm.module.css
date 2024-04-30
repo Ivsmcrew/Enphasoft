@@ -1,0 +1,29 @@
+.form{
+  background-color: rgb(212, 220, 227);
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.label{
+  color: black;
+  font-size: 1.2rem;
+}
+.field{
+  margin-left: 10px;
+  padding: 10px;
+  background-color: rgb(15, 14, 15);
+  color: white;
+  border-radius: 3px;
+}
+.error{
+  color: red;
+}
+.button{
+  margin: 0 auto;
+  padding: 10px 30px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}

@@ -6,7 +6,6 @@ import Layout from "../Layout/Layout";
 
 const AppRouter = function() {
   const {isAuth, setIsAuth} = useContext(UserAuthContext);
-  console.log(isAuth)
 
   let routes = isAuth ? privateRoutes : publicRoutes;
 

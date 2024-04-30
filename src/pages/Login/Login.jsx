@@ -1,7 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from "./Login.module.css"
 import { TokenContext, UserAuthContext } from "../../context/context"
 import { useNavigate } from 'react-router-dom'
+import EmphasoftAPI from '../../API/emphasoft'
+import CustomForm from '../../components/CustomForm/CustomForm'
 
 function Login() {
   const {isAuth, setIsAuth} = useContext(UserAuthContext)
@@ -13,27 +15,30 @@ function Login() {
     setIsAuth(false);
     localStorage.removeItem('auth');
   }
-  function enter() {
-    //getMyToken()
-    setIsAuth(true)
-    localStorage.setItem('auth', 'true')
-    navigate("/")
+
+  async function enter(user) {
+    let token = await EmphasoftAPI.login(user)
+    setToken( token )
+    
+    if (typeof token == "string" && token.length) {
+      setIsAuth(true)
+      localStorage.setItem('auth', 'true')
+      navigate("/")
+    }
   }
 
-  if (isAuth) {
-    return (
+  return (
+    isAuth 
+      ?
       <main className={styles.main}>
         <p>You are already logged in</p>
         <button onClick={exit}>LOG OUT</button>
-      </main>
-    )
-  } else {
-    return (
+      </main> 
+      :
       <main className={styles.main}>
-        <button onClick={enter}>ENTER</button>
+        <CustomForm submitFunction={enter} />
       </main>
-    )
-  }
+  )
 }
 
 export default Login

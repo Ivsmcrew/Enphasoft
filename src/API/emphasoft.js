@@ -1,11 +1,7 @@
 class EmphasoftAPI {
   static emphasoftCDN = 'https://test-assignment.emphasoft.com/api/v1';
-  // static user = {
-  //   username: 'test_super',
-  //   password: 'Nf<U4f<rDbtDxAPn'
-  // }
 
-static async login(user) { //сюда передается объект user. чтоб получить токен и затем его надо будет засетить в контексте
+static async login(user) {
     let response = await fetch(`${this.emphasoftCDN}/login/`, {
       method: "POST",
       headers: {
@@ -21,7 +17,7 @@ static async login(user) { //сюда передается объект user. ч
     }
   }
 
-  static async getUsers(token) { //сюда передается токен, чтоб получить юзеров
+  static async getUsers(token) { 
     let response = await fetch(`${this.emphasoftCDN}/users/`, {
       method: "GET",
       headers: {
