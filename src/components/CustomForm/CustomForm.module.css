@@ -1,24 +1,30 @@
 .form{
-  background-color: rgb(212, 220, 227);
+  background: linear-gradient(45deg, red, fuchsia);
   padding: 40px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
+.input{
+  text-align: right;
+}
 .label{
   color: black;
   font-size: 1.2rem;
+  font-weight: 600;
 }
 .field{
-  margin-left: 10px;
-  padding: 10px;
+  margin-left: 20px;
+  padding: 15px;
   background-color: rgb(15, 14, 15);
   color: white;
   border-radius: 3px;
+  width: 350px;
 }
 .error{
-  color: red;
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
 }
 .button{
   margin: 0 auto;
