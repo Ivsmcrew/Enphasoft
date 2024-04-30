@@ -16,11 +16,14 @@ function Login() {
     localStorage.removeItem('auth');
   }
 
+  //скорее всего эту функцию нельзя было оставлять здесь и пробрасывать в форму, а то криво как будто выходит. 
   async function enter(user) {
-    let token = await EmphasoftAPI.login(user)
-    setToken( token )
-    
-    if (typeof token == "string" && token.length) {
+    let loginData = await EmphasoftAPI.login(user) //возвращает либо строку токена, либо объект ошибки
+
+    if (typeof loginData == "object" && loginData.status) {
+      alert("Неверные логин или пароль. Статус ошибки: " + loginData.status)
+    } else if (typeof loginData == "string" && loginData.length) {
+      setToken( loginData )
       setIsAuth(true)
       localStorage.setItem('auth', 'true')
       navigate("/")

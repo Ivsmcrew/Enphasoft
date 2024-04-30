@@ -13,7 +13,9 @@ static async login(user) {
       let tokenObject = await response.json();
       return tokenObject.token
     } else {
-      alert("Ошибка HTTP: " + response.status);
+      return {
+        status: response.status
+      }
     }
   }
 
