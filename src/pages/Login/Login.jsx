@@ -10,7 +10,7 @@ import { setToken, setIsAuth } from '../../features/auth/authSlice'
 function Login() {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
-  const { isAuth, isTokenLoading, token, error } = authState;
+  const { isAuth, token} = authState;
   const navigate = useNavigate();
 
   function exit() {
@@ -21,7 +21,7 @@ function Login() {
 
   //скорее всего эту функцию нельзя было оставлять здесь и пробрасывать в форму, а то криво как будто выходит. 
   async function enter(user) {
-    let loginData = await EmphasoftAPI.login(user) //возвращает либо строку токена, либо объект ошибки
+    let loginData = await EmphasoftAPI.login(user) 
 
     if (typeof loginData == "object" && loginData.status) {
       alert("Неверные логин или пароль. Статус ошибки: " + loginData.status)

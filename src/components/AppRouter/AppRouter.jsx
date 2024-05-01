@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const AppRouter = function() {
   const state = useSelector((state) => state.auth);
-  let {isAuth, isTokenLoading, error, token} = state;
+  let {isAuth, token} = state;
 
   let routes = isAuth ? privateRoutes : publicRoutes;
 
