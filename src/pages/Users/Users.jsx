@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Users.module.css'
 import EmphasoftAPI from '../../API/emphasoft'
-import { Link, Route, Routes } from 'react-router-dom'
-import CmButton from '../../UI/buttons/CmButton/CmButton'
+import { Route, Routes } from 'react-router-dom'
 import CreateModal from '../CreateModal/CreateModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUsers } from '../../features/users/usersSlice'
+import UPreferences from '../../components/UPreferences/UPreferences'
 
 function Users() {
   const dispatch = useDispatch();
@@ -30,19 +30,7 @@ function Users() {
     <main className={styles.main}>
       <section className={styles.users}>
         <div className={styles.users__usersList}>
-          <div className={styles.usersList__preferences}>
-            <select>
-              <option value="price">Sort...</option>
-              <option value="price">By price</option>
-              <option value="year">By year</option>
-            </select>
-            <input type="text" placeholder="Filter by username"/>
-            <Link to="new-user">
-              <CmButton>
-                Create new user
-              </CmButton>
-            </Link>
-          </div>
+          <UPreferences />
           <div className={styles.usersList__list}>
             {users && users.map(user => {
               return (
