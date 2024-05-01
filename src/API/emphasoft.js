@@ -12,11 +12,7 @@ static async login(user) {
     if (response.ok) { 
       let tokenObject = await response.json();
       return tokenObject.token
-    } else {
-      return {
-        status: response.status
-      }
-    }
+    } 
   }
 
   static async getUsers(token) { 
