@@ -2,10 +2,13 @@ import React from 'react'
 import styles from './CreateModal.module.css'
 import { useNavigate } from 'react-router-dom';
 import { FaRegWindowClose } from "react-icons/fa";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EmphasoftAPI from '../../API/emphasoft';
+import AddForm from "../../components/AddForm/AddForm";
+import { addUser } from '../../features/users/usersSlice';
 
 function CreateModal() {
+  const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   let { isAuth, token } = authState;
   const usersState = useSelector((state) => state.users);
@@ -13,25 +16,20 @@ function CreateModal() {
 
   const navigate = useNavigate();
 
-  async function createUser() {
-    let newUser = await EmphasoftAPI.addUser({
-      "username": "President228",
-      "first_name": "Vladimir",
-      "last_name": "Putin",
-      "password": "Q):PG2K~]-<&$YLi7s4,TRZUJ**17?>]!{p.wnWtP(uMzN[)C![gD0:{4q.#QiLUr!hq",
-      "is_active": true
-    }, token)
-    console.log(newUser)
+  async function createUser(user) {
+    let newUser = await EmphasoftAPI.addUser(user, token)
+    if (newUser) {
+      dispatch( addUser(newUser) )
+    }
+    navigate(-1)
   }
 
   return (
     <section className={styles.createModal}>
-      <button onClick={createUser}>
-        CREATE USER
-      </button>
       <button onClick={() => navigate(-1)}>
         <FaRegWindowClose color='black' size="1.8rem" />
       </button>
+      <AddForm submitFunction={createUser} />
     </section>
   )
 }
