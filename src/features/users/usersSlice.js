@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   users: [],
+  filteredAndSortedUsers: [],
 }
 
 export const usersSlice = createSlice({
@@ -13,10 +14,13 @@ export const usersSlice = createSlice({
     },
     addUser: (state, action) => {
       state.users.push(action.payload)
-    }
+    },
+    setFilteredAndSortedUsers: (state, action) => {
+      state.filteredAndSortedUsers = action.payload
+    },
   }
 })
 
-export const { setUsers, addUser } = usersSlice.actions
+export const { setUsers, addUser, setFilteredAndSortedUsers } = usersSlice.actions
 
 export default usersSlice.reducer

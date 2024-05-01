@@ -3,20 +3,26 @@ import styles from './UPreferences.module.css'
 import { Link } from 'react-router-dom'
 import CmButton from '../../UI/buttons/CmButton/CmButton'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUsers } from '../../features/users/usersSlice'
+import { setFilteredAndSortedUsers } from '../../features/users/usersSlice'
 
 function UPreferences() {
   const [selectedSort, setSelectedSort] = useState("price")
+  const [filter, setFilter] = useState("")
   const dispatch = useDispatch();
   const usersState = useSelector(state => state.users)
-  let { users } = usersState;
+  let { users, filteredAndSortedUsers  } = usersState;
 
   useEffect(() => {
-    sortUsers(selectedSort)
+    if (selectedSort !== "price") {
+      sortUsers(selectedSort)
+    }
   }, [selectedSort])
+  useEffect(() => {
+    filterUsers(filter)
+  }, [filter])
 
   function sortUsers(selectedSort) {
-      dispatch( setUsers([...users].sort((a, b) => {
+      dispatch( setFilteredAndSortedUsers([...users].sort((a, b) => {
         if (selectedSort === 'ascend') {
           return a.id - b.id
         } else if (selectedSort === 'descend') {
@@ -24,9 +30,17 @@ function UPreferences() {
         }
       })))
   }
-
   function handleSelect(event) {
     setSelectedSort(event.target.value)
+  }
+
+  function filterUsers(filter) {
+    dispatch( setFilteredAndSortedUsers([...users].filter((user) => {
+      return ( user.username.toLowerCase().includes(filter.toLowerCase()) )
+    })) )
+  }
+  function handleFilter(event) {
+    setFilter(event.target.value)
   }
 
   return (
@@ -40,7 +54,14 @@ function UPreferences() {
         <option value="ascend">Ascending</option>
         <option value="descend">Descending</option>
       </select>
-      <input type="text" placeholder="Filter by username"/>
+
+      <input 
+        value={filter} 
+        onChange={handleFilter} 
+        type="text" 
+        placeholder="Filter by username"
+      />
+
       <Link to="new-user">
         <CmButton>
           Create new user
