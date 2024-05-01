@@ -8,4 +8,10 @@
   border-radius: 10px;
   border: 1px solid rgba(43, 43, 43, 0.336);
   padding: 20px;
+  width: 590px;
+  display: flex;
+  flex-direction: column;
+}
+.closeBtn{
+  margin-left: auto;
 }

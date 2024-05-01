@@ -26,7 +26,7 @@ function CreateModal() {
 
   return (
     <section className={styles.createModal}>
-      <button onClick={() => navigate(-1)}>
+      <button className={styles.closeBtn} onClick={() => navigate(-1)}>
         <FaRegWindowClose color='black' size="1.8rem" />
       </button>
       <AddForm submitFunction={createUser} />
