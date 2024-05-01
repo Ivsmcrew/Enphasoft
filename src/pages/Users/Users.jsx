@@ -5,18 +5,20 @@ import { Link, Route, Routes } from 'react-router-dom'
 import CmButton from '../../UI/buttons/CmButton/CmButton'
 import CreateModal from '../CreateModal/CreateModal'
 import { useDispatch, useSelector } from 'react-redux'
+import { setUsers } from '../../features/users/usersSlice'
 
 function Users() {
   const dispatch = useDispatch();
   const authState = useSelector(state => state.auth)
-  let {isAuth, isTokenLoading, token, error} = authState
-  const [users, setUsers] = useState([])
+  let {isAuth, token} = authState
+  const usersState = useSelector(state => state.users)
+  let { users } = usersState
 
   useEffect(() => {
     async function getUsers() {
       let usersData = await EmphasoftAPI.getUsers(token)
       if (usersData) {
-        setUsers(usersData)
+        dispatch( setUsers(usersData) )
       }
     }
     if (token.length) {
