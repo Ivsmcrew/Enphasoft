@@ -34,12 +34,14 @@
   color: black;
   padding: 10px;
   border-radius: 5px;
+  flex: 1 0 300px;
 }
 .usersList__list{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content:space-around;
+  gap: 20px;
+  margin-top: 30px;
 }
 .usersList__preferences{
   

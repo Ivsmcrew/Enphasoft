@@ -30,6 +30,23 @@ static async login(user) {
       alert("Ошибка HTTP: " + response.status);
     }
   }
+
+  static async addUser(newUser, token) {
+    let response = await fetch(`${this.emphasoftCDN}/users/`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'Authorization': 'Token ' + token,
+      },
+      body: JSON.stringify(newUser)
+    })
+    if (response.ok) { 
+      let newUser = await response.json();
+      return newUser
+    } else {
+      alert("Ошибка HTTP: " + response.status);
+    }
+  }
 }
 
 export default EmphasoftAPI

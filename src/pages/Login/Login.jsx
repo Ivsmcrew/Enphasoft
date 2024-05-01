@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./Login.module.css"
 import { useNavigate } from 'react-router-dom'
 import EmphasoftAPI from '../../API/emphasoft'
-import CustomForm from '../../components/CustomForm/CustomForm'
+import LoginForm from '../../components/LoginForm/LoginForm'
 import CmButton from '../../UI/buttons/CmButton/CmButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { setToken, setIsAuth } from '../../features/auth/authSlice'
@@ -46,7 +46,7 @@ function Login() {
       </main> 
       :
       <main className={styles.main}>
-        <CustomForm submitFunction={enter} />
+        <LoginForm submitFunction={enter} />
       </main>
   )
 }

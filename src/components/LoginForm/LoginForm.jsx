@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react'
 import * as helper from './helper'
-import styles from './CustomForm.module.css'
+import styles from './LoginForm.module.css'
 import CmButton from '../../UI/buttons/CmButton/CmButton';
 
-function CustomForm({submitFunction}) {
+function LoginForm({submitFunction}) {
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
@@ -50,4 +50,4 @@ function CustomForm({submitFunction}) {
   )
 }
 
-export default CustomForm
+export default LoginForm
