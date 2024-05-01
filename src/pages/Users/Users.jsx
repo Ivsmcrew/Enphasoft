@@ -1,28 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Users.module.css'
-import { TokenContext } from '../../context/context'
 import EmphasoftAPI from '../../API/emphasoft'
 import { Link, Route, Routes } from 'react-router-dom'
 import CmButton from '../../UI/buttons/CmButton/CmButton'
 import CreateModal from '../CreateModal/CreateModal'
+import { useDispatch, useSelector } from 'react-redux'
 
-//TODO: при перезагрузке страницы обновляется и сбрасывается контекст с токеном. 
-// Соответственно необходимо опять перелогиниваться
-// Решение: вынести токен в редакс. Как и юзеров
 function Users() {
-  const {token, setToken} = useContext(TokenContext)
+  const dispatch = useDispatch();
+  const authState = useSelector(state => state.auth)
+  let {isAuth, isTokenLoading, token, error} = authState
   const [users, setUsers] = useState([])
 
   useEffect(() => {
     async function getUsers() {
       let usersData = await EmphasoftAPI.getUsers(token)
-      console.log(usersData)
       if (usersData) {
         setUsers(usersData)
       }
     }
     if (token.length) {
-       getUsers()
+      getUsers()
     }
   }, [])
 

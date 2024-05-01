@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "../../router/router";
-import { UserAuthContext } from "../../context/context";
 import Layout from "../Layout/Layout";
+import { useSelector } from "react-redux";
 
 const AppRouter = function() {
-  const {isAuth, setIsAuth} = useContext(UserAuthContext);
+  const state = useSelector((state) => state.auth);
+  let {isAuth, isTokenLoading, error, token} = state;
 
   let routes = isAuth ? privateRoutes : publicRoutes;
 

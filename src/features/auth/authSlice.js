@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getToken } from "./authActions";
 
 const initialState = {
   isAuth: false,
@@ -14,21 +13,10 @@ export const authSlice = createSlice({
   reducers: {
     setIsAuth: (state, action) => {
       state.isAuth = action.payload
+    },
+    setToken: (state, action) => {
+      state.token = action.payload
     }
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(getToken.pending, (state, action) => {
-        state.isTokenLoading = true
-      })
-      .addCase(getToken.fulfilled, (state, action) => {
-        state.isTokenLoading = false
-        state.token = action.payload
-      })
-      .addCase(getToken.rejected, (state, action) => {
-        state.isTokenLoading = false
-        state.error = action.payload.error
-      })
   }
 })
 

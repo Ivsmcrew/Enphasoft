@@ -1,19 +1,21 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import styles from "./Login.module.css"
-import { TokenContext, UserAuthContext } from "../../context/context"
 import { useNavigate } from 'react-router-dom'
 import EmphasoftAPI from '../../API/emphasoft'
 import CustomForm from '../../components/CustomForm/CustomForm'
 import CmButton from '../../UI/buttons/CmButton/CmButton'
+import { useDispatch, useSelector } from 'react-redux'
+import { setToken, setIsAuth } from '../../features/auth/authSlice'
 
 function Login() {
-  const {isAuth, setIsAuth} = useContext(UserAuthContext)
-  const {token, setToken} = useContext(TokenContext)
+  const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
+  const { isAuth, isTokenLoading, token, error } = authState;
   const navigate = useNavigate();
 
   function exit() {
-    setToken(null)
-    setIsAuth(false);
+    dispatch( setToken(null) )
+    dispatch( setIsAuth(false) )
     localStorage.removeItem('auth');
   }
 
@@ -24,8 +26,8 @@ function Login() {
     if (typeof loginData == "object" && loginData.status) {
       alert("Неверные логин или пароль. Статус ошибки: " + loginData.status)
     } else if (typeof loginData == "string" && loginData.length) {
-      setToken( loginData )
-      setIsAuth(true)
+      dispatch( setToken(loginData) )
+      dispatch( setIsAuth(true) )
       localStorage.setItem('auth', 'true')
       navigate("/")
     }
