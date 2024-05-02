@@ -47,6 +47,33 @@ static async login(user) {
       alert("Ошибка HTTP: " + response.status);
     }
   }
+
+  static async deleteUser(userId, token) {
+    await fetch(`${this.emphasoftCDN}/users/${userId}/`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'Authorization': 'Token ' + token,
+      },
+    })
+  }
+
+  static async updateUser(updatedUser, token) {
+    let response = await fetch(`${this.emphasoftCDN}/users/${updatedUser.id}/`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'Authorization': 'Token ' + token,
+      },
+      body: JSON.stringify(updatedUser)
+    })
+    if (response.ok) { 
+      let updatedUser = await response.json();
+      return updatedUser
+    } else {
+      alert("Ошибка HTTP: " + response.status);
+    }
+  }
 }
 
 export default EmphasoftAPI

@@ -3,7 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   users: [],
   filteredAndSortedUsers: [],
-  viewedUser: null
+  viewedUser: {
+    "id": null,
+    "username": "",
+    "first_name": "",
+    "last_name": "",
+    "password": "",
+    "is_active": null
+  }
 }
 
 export const usersSlice = createSlice({
@@ -21,10 +28,23 @@ export const usersSlice = createSlice({
     },
     setViewedUser: (state, action) => {
       state.viewedUser = action.payload
+    },
+    deleteUserByID: (state, action) => {
+      state.users = state.users.filter(user => user.id !== action.payload)
+    },
+    updateUserAction: (state, action) => {
+      state.users = state.users.map(user => user.id === action.payload.id ? action.payload : user)
     }
   }
 })
 
-export const { setUsers, addUser, setFilteredAndSortedUsers, setViewedUser } = usersSlice.actions
+export const { 
+  setUsers, 
+  addUser, 
+  setFilteredAndSortedUsers, 
+  setViewedUser, 
+  deleteUserByID, 
+  updateUserAction,
+} = usersSlice.actions
 
 export default usersSlice.reducer

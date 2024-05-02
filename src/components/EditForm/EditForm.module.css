@@ -1,0 +1,30 @@
+.form{
+  padding: 10px 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.input{
+  text-align: right;
+}
+.label{
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.field{
+  margin-left: 20px;
+  padding: 15px;
+  background-color: rgb(15, 14, 15);
+  color: white;
+  border-radius: 3px;
+  width: 350px;
+}
+.field:auto-fill{
+  background-color: rgb(15, 14, 15);
+}
+.error{
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}

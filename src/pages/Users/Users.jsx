@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setFilteredAndSortedUsers, setUsers } from '../../features/users/usersSlice'
 import UPreferences from '../../components/UPreferences/UPreferences'
 import UserCard from '../../components/UserCard/UserCard'
+import ViewField from '../../components/ViewField/ViewField'
 
 function Users() {
   const dispatch = useDispatch();
@@ -24,7 +25,6 @@ function Users() {
     }
     if (token.length) {
       getUsers()
-     
     }
   }, [])
   useEffect(() => {
@@ -42,10 +42,10 @@ function Users() {
             )}
           </div>
         </div>
-        <div className={styles.users__viewField}>
-
-        </div>
+        
+        <ViewField />
       </section>
+
       <Routes>
         <Route 
           path="new-user"
