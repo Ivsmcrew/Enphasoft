@@ -1,9 +1,8 @@
 .form{
   padding: 10px 40px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
+}
+.form_inactive{
+  filter:brightness(0.3);
 }
 .input{
   text-align: right;
@@ -27,4 +26,9 @@
 .error{
   color: rgb(0, 0, 0);
   text-decoration: underline;
+}
+.activeWrapper{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 }
