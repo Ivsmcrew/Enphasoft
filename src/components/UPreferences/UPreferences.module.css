@@ -1,5 +1,23 @@
+.usersList__preferences{
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 10px;
+}
 .select{
   padding: 10px;
   border-radius: 5px;
   background-color: black;
+}
+.input{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.274);
+  flex-grow: 1;
+}
+.input:focus{
+  background-color: rgba(0, 0, 0, 0.092);
+}
+.createUserLink{
+  margin-left: auto;
 }

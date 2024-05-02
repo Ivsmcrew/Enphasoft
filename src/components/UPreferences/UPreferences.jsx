@@ -56,13 +56,14 @@ function UPreferences() {
       </select>
 
       <input 
+        className={styles.input}
         value={filter} 
         onChange={handleFilter} 
         type="text" 
         placeholder="Filter by username"
       />
 
-      <Link to="new-user">
+      <Link to="new-user" className={styles.createUserLink}>
         <CmButton>
           Create new user
         </CmButton>
