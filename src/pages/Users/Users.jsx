@@ -23,9 +23,12 @@ function Users() {
     }
     if (token.length) {
       getUsers()
-      dispatch( setFilteredAndSortedUsers([...users]) )
+     
     }
   }, [])
+  useEffect(() => {
+    dispatch( setFilteredAndSortedUsers([...users]) )
+  }, [users])
 
   return (
     <main className={styles.main}>
