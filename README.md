@@ -8,3 +8,6 @@
 # Login
 - Username: test_super
 - Password: Nf<U4f<rDbtDxAPn
+
+# Deploy
+https://enphasoft.vercel.app/
