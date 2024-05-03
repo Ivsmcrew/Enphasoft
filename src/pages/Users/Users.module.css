@@ -29,3 +29,10 @@
   overflow-y: auto;
   max-height: 1000px;
 }
+
+@media screen and (max-width: 1000px) {
+  .users{
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}

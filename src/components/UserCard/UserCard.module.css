@@ -23,3 +23,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media screen and (max-width: 1000px) {
+  .user{
+    flex: 1 1 100%;
+  }
+}

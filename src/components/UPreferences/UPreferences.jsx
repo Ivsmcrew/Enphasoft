@@ -64,7 +64,7 @@ function UPreferences() {
       />
 
       <Link to="new-user" className={styles.createUserLink}>
-        <CmButton>
+        <CmButton className={styles.createBtn}>
           Create user
         </CmButton>
       </Link>

@@ -21,3 +21,28 @@
 .createUserLink{
   margin-left: auto;
 }
+
+@media screen and (max-width: 1290px) {
+  .usersList__preferences{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+  }
+  .select{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  .input{
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+  .createUserLink{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    margin-left: 0;
+  }
+  .createBtn{
+    width: 100%;
+  }
+}
