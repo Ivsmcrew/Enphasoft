@@ -41,10 +41,12 @@ function ViewField() {
 
   return (
     <div className={styles.users__viewField}>
-      <CmButton onClick={() => setIsActive(!isActive)}>
-        {isActive ? "Discard" : "Edit"}
-      </CmButton>
-      <CmButton onClick={deleteHandler}>Delete</CmButton>
+      <div className={styles.buttons}>
+        <CmButton className={styles.editBtn} onClick={() => setIsActive(!isActive)}>
+          {isActive ? "Discard" : "Edit"}
+        </CmButton>
+        <CmButton className={styles.deleteBtn} onClick={deleteHandler}>Delete</CmButton>
+      </div>
 
       <EditForm submitFunction={updateUser} isActive={isActive}/>
     </div>

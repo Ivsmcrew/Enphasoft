@@ -5,3 +5,13 @@
   border-radius: 5px;
   padding: 10px;
 }
+.buttons{
+  text-align: right;
+  margin-bottom: 20px;
+}
+.editBtn{
+
+}
+.deleteBtn{
+  margin-left: 20px;
+}
