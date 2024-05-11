@@ -23,7 +23,7 @@ function Users() {
         dispatch( setUsers(usersData) )
       }
     }
-    if (token.length) {
+    if (token && token.length) {
       getUsers()
     }
   }, [])

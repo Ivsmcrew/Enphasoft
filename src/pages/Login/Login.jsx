@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./Login.module.css"
 import { useNavigate } from 'react-router-dom'
 import EmphasoftAPI from '../../API/emphasoft'
@@ -13,10 +13,20 @@ function Login() {
   const { isAuth, token} = authState;
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      dispatch( setIsAuth(true) )
+    }
+    if (localStorage.getItem('token')) {
+      dispatch( setToken(localStorage.getItem('token')) )
+    }
+  }, [])
+
   function exit() {
     dispatch( setToken(null) )
     dispatch( setIsAuth(false) )
     localStorage.removeItem('auth');
+    localStorage.removeItem('token');
   }
 
   //скорее всего эту функцию нельзя было оставлять здесь и пробрасывать в форму, а то криво как будто выходит. 
@@ -29,6 +39,7 @@ function Login() {
       dispatch( setToken(loginData) )
       dispatch( setIsAuth(true) )
       localStorage.setItem('auth', 'true')
+      localStorage.setItem('token', loginData)
       navigate("/")
     }
   }
