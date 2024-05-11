@@ -6,14 +6,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setFilteredAndSortedUsers } from '../../features/users/usersSlice'
 
 function UPreferences() {
-  const [selectedSort, setSelectedSort] = useState("price")
+  const [selectedSort, setSelectedSort] = useState("id")
   const [filter, setFilter] = useState("")
   const dispatch = useDispatch();
   const usersState = useSelector(state => state.users)
   let { users, filteredAndSortedUsers  } = usersState;
 
   useEffect(() => {
-    if (selectedSort !== "price") {
+    if (selectedSort !== "id") {
       sortUsers(selectedSort)
     }
   }, [selectedSort])
@@ -50,7 +50,7 @@ function UPreferences() {
         value={selectedSort}
         onChange={handleSelect}
       >
-        <option value="price" disabled>Sort by price...</option>
+        <option value="id" disabled>Sort by id...</option>
         <option value="ascend">Ascending</option>
         <option value="descend">Descending</option>
       </select>
