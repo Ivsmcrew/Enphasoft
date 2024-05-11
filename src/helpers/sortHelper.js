@@ -1,5 +1,4 @@
 export function sortUsers(selectedSort, users) {
-  console.log('was sorted')
   if (selectedSort === "id") {
     return users
   }
@@ -13,7 +12,6 @@ export function sortUsers(selectedSort, users) {
   return sortedUsers
 }
 export function filterUsers(filter, users) {
-  console.log('was filtered')
   if (filter === "") {
     return users 
   }
