@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import styles from "./Login.module.css"
-import { useNavigate } from 'react-router-dom'
 import EmphasoftAPI from '../../API/emphasoft'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import CmButton from '../../UI/buttons/CmButton/CmButton'
@@ -11,7 +10,6 @@ function Login() {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const { isAuth, token} = authState;
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem('auth')) {
@@ -40,7 +38,7 @@ function Login() {
       dispatch( setIsAuth(true) )
       localStorage.setItem('auth', 'true')
       localStorage.setItem('token', loginData)
-      navigate("/")
+      // navigate("/")
     }
   }
 
