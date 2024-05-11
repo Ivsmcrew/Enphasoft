@@ -3,42 +3,19 @@ import styles from './UPreferences.module.css'
 import { Link } from 'react-router-dom'
 import CmButton from '../../UI/buttons/CmButton/CmButton'
 import { useDispatch, useSelector } from 'react-redux'
-import { setFilteredAndSortedUsers } from '../../features/users/usersSlice'
+import * as helper from "../../helpers/sortHelper"
 
-function UPreferences() {
-  const [selectedSort, setSelectedSort] = useState("id")
-  const [filter, setFilter] = useState("")
-  const dispatch = useDispatch();
-  const usersState = useSelector(state => state.users)
-  let { users, filteredAndSortedUsers  } = usersState;
-
-  useEffect(() => {
-    if (selectedSort !== "id") {
-      sortUsers(selectedSort)
-    }
-  }, [selectedSort])
-  useEffect(() => {
-    filterUsers(filter)
-  }, [filter])
-
-  function sortUsers(selectedSort) {
-      dispatch( setFilteredAndSortedUsers([...users].sort((a, b) => {
-        if (selectedSort === 'ascend') {
-          return a.id - b.id
-        } else if (selectedSort === 'descend') {
-          return b.id - a.id
-        }
-      })))
-  }
+function UPreferences({ 
+  selectedSort,
+  setSelectedSort,
+  filter,
+  setFilter
+}) 
+{
   function handleSelect(event) {
     setSelectedSort(event.target.value)
   }
 
-  function filterUsers(filter) {
-    dispatch( setFilteredAndSortedUsers([...users].filter((user) => {
-      return ( user.username.toLowerCase().includes(filter.toLowerCase()) )
-    })) )
-  }
   function handleFilter(event) {
     setFilter(event.target.value)
   }
