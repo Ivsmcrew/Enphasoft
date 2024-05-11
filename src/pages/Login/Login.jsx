@@ -38,7 +38,6 @@ function Login() {
       dispatch( setIsAuth(true) )
       localStorage.setItem('auth', 'true')
       localStorage.setItem('token', loginData)
-      // navigate("/")
     }
   }
 
