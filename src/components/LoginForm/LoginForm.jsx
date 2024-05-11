@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react'
-import * as helper from './helper'
+import * as helper from '../../helpers/formHelper'
 import styles from './LoginForm.module.css'
 import CmButton from '../../UI/buttons/CmButton/CmButton';
 
