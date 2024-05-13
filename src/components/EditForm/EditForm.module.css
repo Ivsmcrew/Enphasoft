@@ -8,7 +8,7 @@
   text-align: right;
 }
 .label{
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -24,7 +24,7 @@
   background-color: rgb(15, 14, 15);
 }
 .error{
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   text-decoration: underline;
 }
 .activeWrapper{

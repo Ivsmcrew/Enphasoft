@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./Login.module.css"
-import { useNavigate } from 'react-router-dom'
 import EmphasoftAPI from '../../API/emphasoft'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import CmButton from '../../UI/buttons/CmButton/CmButton'
@@ -11,12 +10,21 @@ function Login() {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const { isAuth, token} = authState;
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      dispatch( setIsAuth(true) )
+    }
+    if (localStorage.getItem('token')) {
+      dispatch( setToken(localStorage.getItem('token')) )
+    }
+  }, [])
 
   function exit() {
     dispatch( setToken(null) )
     dispatch( setIsAuth(false) )
     localStorage.removeItem('auth');
+    localStorage.removeItem('token');
   }
 
   //скорее всего эту функцию нельзя было оставлять здесь и пробрасывать в форму, а то криво как будто выходит. 
@@ -29,7 +37,7 @@ function Login() {
       dispatch( setToken(loginData) )
       dispatch( setIsAuth(true) )
       localStorage.setItem('auth', 'true')
-      navigate("/")
+      localStorage.setItem('token', loginData)
     }
   }
 

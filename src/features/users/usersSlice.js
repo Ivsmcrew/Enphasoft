@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   users: [],
-  filteredAndSortedUsers: [],
   viewedUser: {
     "id": null,
     "username": "",
@@ -10,7 +9,7 @@ const initialState = {
     "last_name": "",
     "password": "",
     "is_active": null
-  }
+  },
 }
 
 export const usersSlice = createSlice({
@@ -22,9 +21,6 @@ export const usersSlice = createSlice({
     },
     addUser: (state, action) => {
       state.users.push(action.payload)
-    },
-    setFilteredAndSortedUsers: (state, action) => {
-      state.filteredAndSortedUsers = action.payload
     },
     setViewedUser: (state, action) => {
       state.viewedUser = action.payload
@@ -41,7 +37,6 @@ export const usersSlice = createSlice({
 export const { 
   setUsers, 
   addUser, 
-  setFilteredAndSortedUsers, 
   setViewedUser, 
   deleteUserByID, 
   updateUserAction,

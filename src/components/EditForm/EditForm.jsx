@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, withFormik } from 'formik';
 import React from 'react'
-import * as helper from './helper'
+import * as helper from '../../helpers/formHelper'
 import styles from "./EditForm.module.css"
 import CmButton from '../../UI/buttons/CmButton/CmButton';
 import { useSelector } from 'react-redux';
