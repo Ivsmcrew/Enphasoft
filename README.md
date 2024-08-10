@@ -1,13 +1,17 @@
-# Emphasoft SPA
-- адаптивность реализована до 600px
-- формы сделаны на библиотеке formik 
-- nested routes реализовано в модальном окне создания нового пользователя через react-router
-- store на redux
-- ссылки в футере ведут на мои социальные контакты
+## Emphasoft SPA
+Is a single page application built with using of React-Redux bunch
 
-# Login
+## Some features in app:
+- adaptive layout up to 600px
+- forms are implemented with the "formik" library 
+- nested routes through the react-router
+- store on redux
+- footer links are my social contacts :)
+
+## Login
 - Username: test_super
 - Password: Nf<U4f<rDbtDxAPn
 
-# Deploy
-https://enphasoft.vercel.app/
+<sub> *Screenshots of the landing:* </sub>
+![Screenshot of the page](/public/images/emphasoft1.png)
+![Screenshot of the page](/public/images/emphasoft2.png)
